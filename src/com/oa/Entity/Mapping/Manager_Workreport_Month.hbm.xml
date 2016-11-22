@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.oa.Entity.Manager_Workreport_Month" table="manager_workreport_month">
+		<id name="manager_Workreport_Month_Id" type="java.lang.Integer" column="manager_workreport_month_id">
+			<generator class="increment"></generator>
+		</id>
+		<many-to-one name="manager" class="com.oa.Entity.Employee_Message" lazy="false" not-null="false" insert="false" update="false">
+			<column name="employee_Id" ></column>
+		</many-to-one>
+		<property name="manager_Workreport_Month_Date" type="java.lang.String" column="manager_workreport_month_date"></property>
+		<property name="manager_Workreport_Month_Title" type="java.lang.String" column="manager_workreport_month_title"></property>
+		<property name="manager_Workreport_Month_Summary" type="java.lang.String" column="manager_workreport_month_summary"></property>
+		<property name="manager_Workreport_Month_Content" type="java.lang.String" column="manager_workreport_month_content"></property>
+		<property name="manager_Workreport_Month_Reply" type="java.lang.String" column="manager_workreport_month_reply"></property>
+		<many-to-one name="state" class="com.oa.Entity.Workreport_State" lazy="false" not-null="false" insert="false" update="false">
+			<column name="workreport_State_Id" ></column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

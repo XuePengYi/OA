@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.oa.Entity.Financial_Statements" table="financial_workreport">
+		<id name="financial_Statements_Id" type="java.lang.Integer" column="financial_statements_id">
+			<generator class="increment"></generator>
+		</id>
+		<many-to-one name="financie_Workreport" class="com.oa.Entity.Financial_Workreport" lazy="false" not-null="false" insert="false" update="false">
+			<column name="financial_Workreport_Id" ></column>
+		</many-to-one>
+		<property name="financial_Statements_Balance" type="java.lang.Float" column="financial_statements_balance"></property>
+	</class>
+</hibernate-mapping>

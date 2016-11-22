@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.oa.Entity.Employee_Workreport_Day" table="employee_workreport_day">
+		<id name="employee_Workreport_Day_Id" type="java.lang.Integer" column="employee_workreport_day_id">
+			<generator class="increment"></generator>
+		</id>
+		<many-to-one name="employee" class="com.oa.Entity.Employee_Message" lazy="false" not-null="false" insert="false" update="false">
+			<column name="employee_Id" ></column>
+		</many-to-one>
+		<many-to-one name="manager" class="com.oa.Entity.Employee_Message" lazy="false" not-null="false" insert="false" update="false">
+			<column name="employee_Id" ></column>
+		</many-to-one>
+		<property name="employee_Workreport_Day_Date" type="java.lang.String" column="employee_workreport_day_date"></property>
+		<property name="employee_Workreport_Day_Title" type="java.lang.String" column="employee_workreport_day_title"></property>
+		<property name="employee_Workreport_Day_Summary" type="java.lang.String" column="employee_workreport_day_summary"></property>
+		<property name="employee_Workreport_Day_Content" type="java.lang.String" column="employee_workreport_day_content"></property>
+		<property name="employee_Workreport_Day_Reply" type="java.lang.String" column="employee_workreport_day_reply"></property>
+		<many-to-one name="state" class="com.oa.Entity.Workreport_State" lazy="false" not-null="false">
+			<column name="workreport_State_Id" ></column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

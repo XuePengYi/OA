@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.oa.Entity.Employee_Message" table="employee_message">
+		<id name="employee_Id" type="java.lang.Integer" column="employee_id" >
+			<generator class="increment"></generator>
+		</id>
+		<property name="employee_Name" type="java.lang.String" column="employee_name"></property>
+		<property name="employee_Age" type="java.lang.String" column="employee_age"></property>
+		<property name="employee_Phone" type="java.lang.String" column="employee_phone"></property>
+		<property name="employee_Sex" type="java.lang.String" column="employee_sex"></property>
+		<property name="employee_Address" type="java.lang.String" column="employee_address"></property>
+		<many-to-one name="employee_Sector" class="com.oa.Entity.Employee_Sector"  lazy="false" not-null="false" insert="false" update="false">
+			<column name="employee_Sector_Id"></column>
+		</many-to-one>
+		<many-to-one name="employee_Type" class="com.oa.Entity.Employee_Type"  lazy="false" not-null="false" insert="false" update="false">
+			<column name="employee_Type_Id"></column>
+		</many-to-one>
+	</class>
+</hibernate-mapping>

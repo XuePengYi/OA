@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.oa.Entity.Attendance_Management" table="attendance_management">
+		<id name="attendance_Id" type="java.lang.Integer" column="attendance_id">
+			<generator class="increment"></generator>
+		</id>
+		<many-to-one name="employee" class="com.oa.Entity.Employee_Message"  lazy="false" not-null="false" insert="false" update="false">
+			<column name="employee_Id"></column>
+		</many-to-one>
+		<property name="attendance_Days" type="java.lang.Integer" column="attendance_days"></property>
+		<property name="absence_Days" type="java.lang.Integer" column="absence_days"></property>
+		<property name="work_Times" type="java.lang.Integer" column="work_times"></property>
+	</class>
+</hibernate-mapping>

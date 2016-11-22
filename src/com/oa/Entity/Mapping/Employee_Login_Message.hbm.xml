@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.oa.Entity.Employee_Login_Message" table="employee_login_message">
+		<id name="employee_Login_Id" type="java.lang.Integer" column="employee_login_id">
+			<generator class="increment"></generator>
+		</id>
+		<many-to-one name="employee" class="com.oa.Entity.Employee_Message" lazy="false" not-null="false" unique="true" insert="false" update="false">
+			<column name="employee_Id" ></column>
+		</many-to-one>
+		<property name="employee_Login_Password" type="java.lang.String" column="employee_login_password"></property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.oa.Entity.Employee_Type" table="employee_type">
+		<id name="employee_Type_Id" type="java.lang.Integer" column="employee_type_id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="employee_Type_Name" type="java.lang.String" column="employee_type_name"></property>
+	</class>
+</hibernate-mapping>
