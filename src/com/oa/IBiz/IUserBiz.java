@@ -1,4 +1,4 @@
-package com.oa.IDao;
+package com.oa.IBiz;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import com.oa.Entity.Attendance_Management;
 import com.oa.Entity.Employee_Message;
 import com.oa.Entity.Employee_Punchcard_Message;
 
-public interface IUserDao {
+public interface IUserBiz {
 	
 	public List login(Integer userName,String userPwd); //用户登录
 	public String punchCard_First(Employee_Punchcard_Message epmf); //打卡(上班)

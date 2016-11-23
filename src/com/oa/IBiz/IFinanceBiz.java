@@ -1,4 +1,4 @@
-package com.oa.IDao;
+package com.oa.IBiz;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import com.oa.Entity.Financial_Workreport;
 import com.oa.Entity.Manager_Workreport_Day;
 import com.oa.Entity.Manager_Workreport_Month;
 
-public interface IFinanceDao{
+public interface IFinanceBiz{
 
 	public void submitFinancialWorkreport_All(List<Financial_Workreport> fwa); //提交全部工作汇报
 	public void submitFinancialWorkreport_Unaudited(Financial_Workreport fwu); //提交未审核的工作汇报

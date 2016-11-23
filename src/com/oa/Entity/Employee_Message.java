@@ -12,6 +12,7 @@ public class Employee_Message implements Serializable{
 		private Employee_Sector employee_Sector;
 		private Employee_Type employee_Type;
 		
+		
 		public Integer getEmployee_Id() {
 			return employee_Id;
 		}

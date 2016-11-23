@@ -6,6 +6,9 @@
 	<constant name="struts.i18n.encoding" value="gbk"></constant>
 	<package name="default" namespace="" extends="struts-default">
 		<default-action-ref name=""></default-action-ref>
-		<action name=""></action>
+		<action name="loginAction" class="userAct" method="login">
+			<result name="success">index.html</result>
+			<result name="login">sign-in.html</result>
+		</action>
 	</package>
 </struts>

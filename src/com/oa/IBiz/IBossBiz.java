@@ -1,4 +1,4 @@
-package com.oa.IDao;
+package com.oa.IBiz;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import com.oa.Entity.Financial_Workreport;
 import com.oa.Entity.Manager_Workreport_Day;
 import com.oa.Entity.Manager_Workreport_Month;
 
-public interface IBossDao{
+public interface IBossBiz{
 
 	public List<Employee_Message> getPersonalInfo(); //查询个人信息
 	public List<Attendance_Management> getAttenanceInfo(); //查询个人考勤信息
