@@ -11,7 +11,7 @@ public class BaseDao implements IBaseDao{
 	@Override
 	public Session getSession() {
 		// TODO Auto-generated method stub
-		return sessionFactory.getCurrentSession();
+		return sessionFactory.openSession();
 	}
 
 	public static SessionFactory getSessionFactory() {

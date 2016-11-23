@@ -16,12 +16,12 @@ public class UserAction extends ActionSupport implements IUserAction,SessionAwar
 	UserBiz userBiz;
 	Employee_Punchcard_Message epmf;
 	Employee_Punchcard_Message epml;
-	Employee_Message user;
+	Employee_Message user=new Employee_Message();
 	Map<String, Object> session;
 	Integer userName;
 	String userPwd;
 	@Override
-	public String login(Integer userName, String userPwd) {
+	public String login() {
 		List users=userBiz.login(userName, userPwd);
 		System.out.println(users.size());
 		if(users.size()==1){
@@ -35,14 +35,14 @@ public class UserAction extends ActionSupport implements IUserAction,SessionAwar
 	}
 
 	@Override
-	public String punchCard_First(Employee_Punchcard_Message epmf) {
+	public String punchCard_First() {
 		epmf.setEmployee(user);
 		userBiz.punchCard_First(epmf);
 		return SUCCESS;
 	}
 
 	@Override
-	public String punchCard_Last(Employee_Punchcard_Message epml) {
+	public String punchCard_Last() {
 		epml.setEmployee(user);
 		List<Employee_Punchcard_Message> epmfl=userBiz.getOneEmployee_Punchcard_Message(user);
 		if(epmfl.size()==0){	
@@ -61,13 +61,13 @@ public class UserAction extends ActionSupport implements IUserAction,SessionAwar
 	}
 
 	@Override
-	public String getPersonalInfo(Employee_Message user) {
+	public String getPersonalInfo() {
 		// TODO Auto-generated method stub
 		return SUCCESS;
 	}
 
 	@Override
-	public String getAttenanceInfo(Employee_Message user) {
+	public String getAttenanceInfo() {
 		// TODO Auto-generated method stub
 		return null;
 	}

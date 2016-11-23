@@ -8,10 +8,10 @@ import com.oa.Entity.Employee_Punchcard_Message;
 
 public interface IUserAction {
 	
-	public String login(Integer userName,String userPwd); //用户登录
-	public String punchCard_First(Employee_Punchcard_Message epmf); //打卡(上班)
-	public String punchCard_Last(Employee_Punchcard_Message epml); //打卡(下班)
-	public String getPersonalInfo(Employee_Message user); //查询个人信息
-	public String getAttenanceInfo(Employee_Message user); //查询个人考勤信息
+	public String login(); //用户登录
+	public String punchCard_First(); //打卡(上班)
+	public String punchCard_Last(); //打卡(下班)
+	public String getPersonalInfo(); //查询个人信息
+	public String getAttenanceInfo(); //查询个人考勤信息
 	
 }
