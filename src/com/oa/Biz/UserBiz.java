@@ -53,4 +53,10 @@ public class UserBiz implements IUserBiz{
 		return userDao.getAttenanceInfo(user);
 	}
 
+	@Override
+	public List<Employee_Punchcard_Message> getAllEmployee_Punchcard_Message(Employee_Message user) {
+		// TODO Auto-generated method stub
+		return userDao.getAllEmployee_Punchcard_Message(user);
+	}
+
 }

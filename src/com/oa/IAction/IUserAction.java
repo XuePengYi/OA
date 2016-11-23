@@ -13,5 +13,5 @@ public interface IUserAction {
 	public String punchCard_Last(); //打卡(下班)
 	public String getPersonalInfo(); //查询个人信息
 	public String getAttenanceInfo(); //查询个人考勤信息
-	
+	public String getAllEmployee_Punchcard_Message();//查询个人打卡信息
 }

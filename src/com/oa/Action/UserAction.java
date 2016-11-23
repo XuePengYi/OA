@@ -1,5 +1,7 @@
 package com.oa.Action;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -37,6 +39,7 @@ public class UserAction extends ActionSupport implements IUserAction,SessionAwar
 	@Override
 	public String punchCard_First() {
 		epmf.setEmployee(user);
+		epmf.setEmployee_Punchcard_Message_Firsttime(new SimpleDateFormat("yyyy-MM-dd hh-mm-ss").format(new Date()));
 		userBiz.punchCard_First(epmf);
 		return SUCCESS;
 	}
@@ -44,8 +47,10 @@ public class UserAction extends ActionSupport implements IUserAction,SessionAwar
 	@Override
 	public String punchCard_Last() {
 		epml.setEmployee(user);
+		epml.setEmployee_Punchcard_Message_Firsttime(new SimpleDateFormat("yyyy-MM-dd hh-mm-ss").format(new Date()));
 		List<Employee_Punchcard_Message> epmfl=userBiz.getOneEmployee_Punchcard_Message(user);
-		if(epmfl.size()==0){	
+		if(epmfl.size()==0){
+			epmf.setEmployee_Punchcard_Message_Firsttime(new SimpleDateFormat("yyyy-MM-dd hh-mm-ss").format(new Date()));
 			userBiz.punchCard_First(epml);
 		}else{
 			epmf=epmfl.get(0);
@@ -128,6 +133,17 @@ public class UserAction extends ActionSupport implements IUserAction,SessionAwar
 
 	public Map<String, Object> getSession() {
 		return session;
+	}
+
+	@Override
+	public String getAllEmployee_Punchcard_Message() {
+		List<Employee_Punchcard_Message> emps=userBiz.getAllEmployee_Punchcard_Message(user);
+		if(emps.size()==0){
+			session.put("Employee_Punchcard_Message", "暂时没有打卡信息");
+		}else{
+			session.put("Employee_Punchcard_Messages", emps);
+		}
+		return SUCCESS;
 	}
 
 	

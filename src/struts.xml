@@ -5,10 +5,19 @@
 <struts>
 	<constant name="struts.i18n.encoding" value="gbk"></constant>
 	<package name="default" namespace="" extends="struts-default">
-		<default-action-ref name=""></default-action-ref>
+		<default-action-ref name="loginAction"></default-action-ref>
 		<action name="loginAction" class="userAct" method="login">
 			<result name="success">index.jsp</result>
 			<result name="login">sign-in.html</result>
+		</action>
+		<action name="firstAction" class="userAct" method="punchCard_First">
+			<result name="success" type="redirect">getAllEPMAction</result>
+		</action>
+		<action name="lastAction" class="userAct" method="punchCard_Last">
+			<result name="success" type="redirect">getAllEPMAction</result>
+		</action>
+		<action name="getAllEPMAction" class="userAct" method="getAllEmployee_Punchcard_Message">
+			<result name="success">index.jsp</result>
 		</action>
 	</package>
 </struts>

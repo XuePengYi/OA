@@ -69,4 +69,13 @@ public class UserDao extends BaseDao implements IUserDao{
 		return null;
 	}
 
+	@Override
+	public List<Employee_Punchcard_Message> getAllEmployee_Punchcard_Message(Employee_Message user) {
+		Session session=getSession();
+		Query query=session.createQuery("from Employee_Punchcard_Message as epm where epm.employee.employee_Id=:employee_Id");
+		query.setInteger("employee_Id", user.getEmployee_Id());
+		List<Employee_Punchcard_Message> emps=query.list();
+		return emps;
+	}
+
 }
