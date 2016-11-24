@@ -98,7 +98,7 @@
             <li ><a href="users.html" target="show">日工作汇报</a></li>
             <li ><a href="xinzi.html" target="show" >薪资查询</a></li>
             <li ><a href="kaoqin.html" target="show">考勤查询</a></li>
-            <li ><a href="daka.html" target="show">打卡</a></li>
+            <li ><a href="getAllEPMAction" target="show">打卡</a></li>
             
         </ul>
 

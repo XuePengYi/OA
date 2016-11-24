@@ -86,8 +86,8 @@
 
 		<ul class="breadcrumb">
 			操作
-			<li class="active"><input type="button" value="上班了！" onclick="firstAction"></li>
-			<li class="active"><input type="button" value="下班了！" onclick="lastAction"></li>
+			<li class="active"><a href="firstAction"><input type="button" value="上班了！" ></a></li>
+			<li class="active"><a href="lastAction"><input type="button" value="下班了！" ></a></li>
 		</ul>
 
 		<div class="container-fluid">
@@ -113,7 +113,7 @@
 <c:forEach items="${sessionScope.Employee_Punchcard_Message }" var="emp" varStatus="vs">
 				<tr>
 						<td>${vs.index }</td>
-						<td>${emp.employee.employee_Name }</td>
+						<td>${sessionScope.loginUser.employee_Name}</td>
 						<td>${emp.employee_Punchcard_Message_Firsttime }</td>
 						<td>${emp.employee_Punchcard_Message_Lasttime }</td>
 					</tr>

@@ -17,7 +17,7 @@
 			<result name="success" type="redirect">getAllEPMAction</result>
 		</action>
 		<action name="getAllEPMAction" class="userAct" method="getAllEmployee_Punchcard_Message">
-			<result name="success">index.jsp</result>
+			<result name="success">daka.jsp</result>
 		</action>
 	</package>
 </struts>

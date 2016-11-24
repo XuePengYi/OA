@@ -5,8 +5,8 @@ import java.io.Serializable;
 public class Employee_Punchcard_Message implements Serializable{
 		private Integer employee_Punchcard_Message_Id;
 		private Employee_Message employee;
-		private String employee_Punchcard_Message_Firsttime;
-		private String employee_Punchcard_Message_Lasttime;
+		private String employee_Punchcard_Message_Firsttime="123";
+		private String employee_Punchcard_Message_Lasttime="123";
 		public Integer getEmployee_Punchcard_Message_Id() {
 			return employee_Punchcard_Message_Id;
 		}
@@ -32,6 +32,12 @@ public class Employee_Punchcard_Message implements Serializable{
 			this.employee_Punchcard_Message_Lasttime = employee_Punchcard_Message_Lasttime;
 		}
 		public Employee_Punchcard_Message() {
+		}
+		public Employee_Punchcard_Message(String employee_Punchcard_Message_Firsttime,
+				String employee_Punchcard_Message_Lasttime) {
+			super();
+			this.employee_Punchcard_Message_Firsttime = employee_Punchcard_Message_Firsttime;
+			this.employee_Punchcard_Message_Lasttime = employee_Punchcard_Message_Lasttime;
 		}
 		
 		

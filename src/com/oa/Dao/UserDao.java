@@ -46,6 +46,7 @@ public class UserDao extends BaseDao implements IUserDao{
 	public String punchCard_First(Employee_Punchcard_Message epmf) {
 		Session session=getSession();
 		Transaction tx=session.beginTransaction();
+		System.out.println(epmf.getEmployee_Punchcard_Message_Firsttime());
 		session.save(epmf);
 		tx.commit();
 		return null;
@@ -53,9 +54,9 @@ public class UserDao extends BaseDao implements IUserDao{
 	
 	public List<Employee_Punchcard_Message> getOneEmployee_Punchcard_Message(Employee_Message user){
 		Session session=getSession();
-		String hql="from Employee_Punchcard_Message as epm where epm.employee.employee_Id=:employee_Id and max(epm.employee_Punchcard_Message_Id)";
-		Query query=session.createQuery(hql);
-		query.setInteger("employee_Id", user.getEmployee_Id());
+		String sql="select * from employee_punchcard_message as epm where epm.employee.employee_Id=? and epm.employee_Punchcard_Message_Id=(select max(employee_Punchcard_Message_Id) from employee_punchcard_message)";
+		Query query=session.createSQLQuery(sql);
+		query.setInteger(1, user.getEmployee_Id());
 		List<Employee_Punchcard_Message> epmf=query.list();
 		return epmf;
 	}
@@ -75,6 +76,7 @@ public class UserDao extends BaseDao implements IUserDao{
 		Query query=session.createQuery("from Employee_Punchcard_Message as epm where epm.employee.employee_Id=:employee_Id");
 		query.setInteger("employee_Id", user.getEmployee_Id());
 		List<Employee_Punchcard_Message> emps=query.list();
+		System.out.println(emps.size());
 		return emps;
 	}
 

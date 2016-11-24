@@ -16,8 +16,8 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class UserAction extends ActionSupport implements IUserAction,SessionAware{
 	UserBiz userBiz;
-	Employee_Punchcard_Message epmf;
-	Employee_Punchcard_Message epml;
+	Employee_Punchcard_Message epmf=new Employee_Punchcard_Message();
+	Employee_Punchcard_Message epml=new Employee_Punchcard_Message();
 	Employee_Message user=new Employee_Message();
 	Map<String, Object> session;
 	Integer userName;
@@ -139,7 +139,9 @@ public class UserAction extends ActionSupport implements IUserAction,SessionAwar
 	public String getAllEmployee_Punchcard_Message() {
 		List<Employee_Punchcard_Message> emps=userBiz.getAllEmployee_Punchcard_Message(user);
 		if(emps.size()==0){
-			session.put("Employee_Punchcard_Message", "暂时没有打卡信息");
+			Employee_Punchcard_Message empty=new Employee_Punchcard_Message("没有打卡信息", "没有打卡信息");
+			emps.add(empty);
+			session.put("Employee_Punchcard_Message", emps);
 		}else{
 			session.put("Employee_Punchcard_Messages", emps);
 		}
