@@ -10,8 +10,8 @@ import com.oa.Entity.Manager_Workreport_Month;
 
 public interface IManagerBiz{
 	
-	public List<Employee_Message> getPersonalInfo(List<Employee_Message> employees); //查询部门员工信息
-	public List<Attendance_Management> getAttenanceInfo(List<Employee_Message> employees); //查看部门考勤信息
+	public List<Employee_Message> getPersonalInfo(Employee_Message employees); //查询部门员工信息
+	public List<Attendance_Management> getAttenanceInfo(Employee_Message employees); //查看部门考勤信息
 	public void submitWorkreportDay(Manager_Workreport_Day ewd); //提交日工作汇报
 	public void submitWorkreportMonth(Manager_Workreport_Month ewm); //提交月工作汇报
 	public List<Employee_Workreport_Day> checkWorkreportDay_Employee(List<Employee_Message> employees); //查看本部门员工的工作汇报

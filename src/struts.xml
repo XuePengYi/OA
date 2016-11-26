@@ -5,7 +5,8 @@
 <struts>
 	<constant name="struts.i18n.encoding" value="gbk"></constant>
 	<package name="default" namespace="" extends="struts-default">
-		<default-action-ref name="loginAction"></default-action-ref>
+		<default-action-ref name=""></default-action-ref>
+		<!-- 公用 -->
 		<action name="loginAction" class="userAct" method="login">
 			<result name="success">index.jsp</result>
 			<result name="login">sign-in.html</result>
@@ -17,7 +18,84 @@
 			<result name="success" type="redirect">getAllEPMAction</result>
 		</action>
 		<action name="getAllEPMAction" class="userAct" method="getAllEmployee_Punchcard_Message">
-			<result name="success">daka.jsp</result>
+			<result name="success"  type="redirect">oa/daka.jsp</result>
 		</action>
+		<action name="showAllEPMAction" class="userAct" method="getAllEmployee_Punchcard_Message">
+			<result name="success"  type="redirect">oa/kaoqin.jsp</result>
+		</action>
+		<action name="updateEmloyee_MessageAction" class="userAct" method="updateEmployee_Message">
+			<result name="success"  type="redirect">oa/message.jsp</result>
+		</action>
+		<action name="getManagerAction" class="userAct" method="getManager">
+			<result name="success"  type="redirect">oa/emp_day.jsp</result>
+		</action>
+		<action name="saveEWDAction" class="userAct" method="saveEWD">
+			<result name="success"  type="redirect">getAllEWDAction</result>
+		</action>
+		<action name="getAllEWDAction" class="userAct" method="getAllEmployee_Workreport_Day">
+			<result name="success"  type="redirect">oa/users.jsp</result>
+		</action>
+
+		
+		<!-- 财务 -->
+		<action name="showAction" class="financialAct" method="show">
+			<result name="success" type="redirect">oa/caiwubaogao.jsp</result>
+		</action>
+		
+		<action name="showGoAction" class="financialAct" method="showGo">
+			<result name="success">caiwucaozuo.jsp</result>
+		</action>
+		
+		<action name="new_caiwu" class="financialAct" method="submitFinancialWorkreport_Unaudited">
+			<result name="success" type="redirect">showAction</result>
+		</action>
+		
+		<!--Manager  -->
+		<action name="managerGetAllPersonalInfoAction" class="managerAct" method="getPersonalInfo">
+			<result name="success">yuangongmessage.jsp</result>
+		</action>
+		<action name="managerGetAttenanceInfoAction" class="managerAct" method="getAttenanceInfo">
+			<result name="success">yuangongkaoqinmessage.jsp</result>
+		</action>
+		<action name="managerGetEmployeeWorkportDayInfoAction" class="managerAct" method="getEmployeeWorkportDayInfo">
+			<result name="success">chaokanrihuibao.jsp</result>
+		</action>
+		<action name="managerGetOneEmployeeWorkportDayInfoAction" class="managerAct" method="getOneEmployeeWorkportDayInfo">
+			<result name="success">managershenpi.jsp</result>
+		</action>
+		<action name="managerUpdateOneEmployeeWorkportDayInfoAction" class="managerAct" method="updateOneEmployeeWorkportDayInfo">
+			<result name="success" type="chain">managerGetEmployeeWorkportDayInfoAction</result>
+		</action>
+		<action name="managerGetEmployeeWorkportSomedayInfoInfoAction" class="managerAct" method="getEmployeeWorkportSomedayInfo">
+			<result name="success">chaokanrihuibao.jsp</result>
+		</action>
+		<action name="managersubmitWorkreportMonthInfoAction" class="managerAct" method="submitWorkreportMonth">
+			<result name="success" type="chain">managercheckWorkreportMonthInfoAction</result>
+		</action>
+		<action name="managercheckWorkreportMonthInfoAction" class="managerAct" method="checkWorkreportMonth">
+			<result name="success">chaokanyuehuibao.jsp</result>
+		</action>
+		
+		
+	<!--boss  -->
+		<action name="bossCheckWorkreportDay_Manager_AllAction" class="bossAct" method="checkWorkreportDay_Manager_All">
+			<result name="success" type="">boss-managerWorkportMonth.jsp</result>
+		</action>	
+		<action name="bossCheckOneWorkreportDay_Manager_AllAction" class="bossAct" method="checkOneWorkreportDay_Manager_All">
+			<result name="success" type="">boss-managershenpi.jsp</result>
+		</action>	
+		<action name="bossOpManagerWorkreport_StateAction" class="bossAct" method="opManagerWorkreport_State">
+			<result name="success" type="chain">bossCheckWorkreportDay_Manager_AllAction</result>
+		</action>	
+	
+		<action name="bossGetFinancialWorkportAction" class="bossAct" method="getFinancialWorkport">
+			<result name="success" type="">boss-FinancialWorkport.jsp</result>
+		</action>	
+		<action name="bossGetOneFinancialWorkportAction" class="bossAct" method="getOneFinancialWorkport">
+			<result name="success" type="">boss-financialshenpi.jsp</result>
+		</action>	
+		<action name="bossOpFinancialWorkreport_StateAction" class="bossAct" method="opFinancialWorkreport_State">
+			<result name="success" type="chain">bossGetFinancialWorkportAction</result>
+		</action>	
 	</package>
 </struts>

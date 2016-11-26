@@ -94,34 +94,39 @@
 
         <a href="#dashboard-menu" class="nav-header" data-toggle="collapse"><i class="icon-dashboard"></i>员工基础业务</a>
       <ul id="dashboard-menu" class="nav nav-list collapse in">
-            <li><a href="message.html" target="show">个人基本信息</a></li>
-            <li ><a href="users.html" target="show">日工作汇报</a></li>
+            <li><a href="message.jsp" target="show">个人基本信息</a></li>
+            <li ><a href="getAllEWDAction" target="show">日工作汇报</a></li>
             <li ><a href="xinzi.html" target="show" >薪资查询</a></li>
-            <li ><a href="kaoqin.html" target="show">考勤查询</a></li>
+            <li ><a href="showAllEPMAction" target="show">考勤查询</a></li>
             <li ><a href="getAllEPMAction" target="show">打卡</a></li>
             
         </ul>
 
         <a href="#accounts-menu" class="nav-header" data-toggle="collapse"><i class="icon-briefcase"></i>财务部业务<span class="label label-info"></span></a>
         <ul id="accounts-menu" class="nav nav-list collapse">
-            <li ><a href="caiwu.html" target="show">申请新的财务审批</a></li>
-            <li ><a href="caiwucaozuo.html" target="show">财务操作</a></li>
-            <li ><a href="caiwubaogao.html" target="show">财务报告详细查询与提交</a></li>
+            <li ><a href="caiwu.jsp" target="show">申请新的财务审批</a></li>
+            <li ><a href="caiwucaozuo.jsp" target="show">财务操作</a></li>
+            <li ><a href="caiwubaogao.jsp" target="show">财务报告详细查询与提交</a></li>
         </ul>
 
         <a href="#error-menu" class="nav-header collapsed" data-toggle="collapse"><i class="icon-exclamation-sign"></i>经理部业务<i class="icon-chevron-up"></i></a>
         <ul id="error-menu" class="nav nav-list collapse">
-            <li ><a href="chaokanrihuibao.html" target="show">查看员工汇报及审批</a></li>
-            <li ><a href="yuekaoqin.html" target="show">提交月考勤信息</a></li>
-            <li ><a href="faburenwu.html" target="show">对本部门发布任务</a></li>
+            <li ><a href="managermessage.jsp" target="show">查看经理个人信息</a></li>
+        	<li><a href="managerGetAllPersonalInfoAction" target="show">部门员工基本信息</a></li>
+        	<li><a href="managerGetAttenanceInfoAction" target="show">部门员工考勤信息</a></li>
+            <li ><a href="managerGetEmployeeWorkportDayInfoAction" target="show">查看员工汇报及审批</a></li>
+            <li ><a href="manageryuekaoqin.jsp" target="show">提交月考勤信息</a></li>
+            <li ><a href="managercheckWorkreportMonthInfoAction" target="show">查看月考勤信息</a></li>
+            <!-- <li ><a href="faburenwu.html" target="show">对本部门发布任务</a></li> -->
+            <li ><a href="getAllEPMAction" target="show">打卡</a></li>
             
         </ul>
 
         <a href="#legal-menu" class="nav-header" data-toggle="collapse"><i class="icon-legal"></i>老板业务</a>
         <ul id="legal-menu" class="nav nav-list collapse">
-            <li ><a href="shenpikaoqin.html" target="show">审批考勤</a></li>
-            <li ><a href="shenpicaiwu.html" target="show">审批财务资产信息</a></li>
-            <li ><a href="fabugonggao.html" target="show">向全员发布公司公告</a></li>
+           <li ><a href="bossCheckWorkreportDay_Manager_AllAction" target="show">审批经理月考勤</a></li>
+            <li ><a href="bossGetFinancialWorkportAction" target="show">审批财务资产信息</a></li>
+            <!-- <li ><a href="fabugonggao.html" target="show">向全员发布公司公告</a></li> -->
         </ul>
 
         <a href="help.html" class="nav-header" target="show"><i class="icon-question-sign"></i>通知</a>

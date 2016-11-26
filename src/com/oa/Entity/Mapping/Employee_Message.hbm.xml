@@ -12,10 +12,12 @@
 		<property name="employee_Phone" type="java.lang.String" column="employee_phone"></property>
 		<property name="employee_Sex" type="java.lang.String" column="employee_sex"></property>
 		<property name="employee_Address" type="java.lang.String" column="employee_address"></property>
-		<many-to-one name="employee_Sector" class="com.oa.Entity.Employee_Sector"  lazy="false" not-null="false" insert="false" update="false">
+		
+		<many-to-one name="employee_Sector" class="com.oa.Entity.Employee_Sector"  lazy="false" not-null="false" >
 			<column name="employee_Sector_Id"></column>
 		</many-to-one>
-		<many-to-one name="employee_Type" class="com.oa.Entity.Employee_Type"  lazy="false" not-null="false" insert="false" update="false">
+		
+		<many-to-one name="employee_Type" class="com.oa.Entity.Employee_Type"  lazy="false" not-null="false" >
 			<column name="employee_Type_Id"></column>
 		</many-to-one>
 	</class>

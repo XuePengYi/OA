@@ -7,10 +7,16 @@
 		<id name="employee_Punchcard_Message_Id" type="java.lang.Integer" column="employee_punchcard_message_id">
 			<generator class="increment"></generator>
 		</id>
-		<many-to-one name="employee" class="com.oa.Entity.Employee_Message"  lazy="false" not-null="false" insert="false" update="false">
+		
+		<many-to-one name="employee" class="com.oa.Entity.Employee_Message"  lazy="false" not-null="false">
 			<column name="employee_Id"></column>
 		</many-to-one>
+		
 		<property name="employee_Punchcard_Message_Firsttime" type="java.lang.String" column="employee_punchcard_message_firsttime"></property>
 		<property name="employee_Punchcard_Message_Lasttime" type="java.lang.String" column="employee_punchcard_message_lasttime"></property>
+		
+		<many-to-one name="state" class="com.oa.Entity.Employee_Punchcard_Message_State"  lazy="false" not-null="false">
+			<column name="employee_punchcard_message_state_id"></column>
+		</many-to-one>
 	</class>
 </hibernate-mapping>

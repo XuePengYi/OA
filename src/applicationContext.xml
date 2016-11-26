@@ -29,7 +29,7 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>			
 				<prop key="hibernate.show_sql">true</prop>			
-				<prop key="hibernate.format_sql">true</prop>			
+				<prop key="hibernate.format_sql">false</prop>			
 				<prop key="hibernate.hbm2ddl.auto">update</prop>			
 			</props>
 		</property>
@@ -40,6 +40,7 @@
 				<value>com/oa/Entity/Mapping/Employee_Login_Message.hbm.xml</value>
 				<value>com/oa/Entity/Mapping/Employee_Message.hbm.xml</value>
 				<value>com/oa/Entity/Mapping/Employee_Punchcard_Message.hbm.xml</value>
+				<value>com/oa/Entity/Mapping/Employee_Punchcard_Message_State.hbm.xml</value>
 				<value>com/oa/Entity/Mapping/Employee_Sector.hbm.xml</value>
 				<value>com/oa/Entity/Mapping/Employee_Type.hbm.xml</value>
 				<value>com/oa/Entity/Mapping/Employee_Workreport_Day.hbm.xml</value>
@@ -51,8 +52,24 @@
 				<value>com/oa/Entity/Mapping/Workreport_State.hbm.xml</value>
 			</list>
 		</property>
-	</bean>		
+	</bean>
+	<!-- 公用 -->		
 	<bean name="userDao" class="com.oa.Dao.UserDao" />
 	<bean name="userBiz" class="com.oa.Biz.UserBiz" />
 	<bean name="userAct" class="com.oa.Action.UserAction" />
+	
+	<!-- 财务 -->
+	<bean name="financialAct" class="com.oa.Action.FinancialAction"></bean>
+	<bean name="financialBiz" class="com.oa.Biz.FinancialBiz"></bean>
+	<bean name="financialDao" class="com.oa.Dao.FinancialDao"></bean>
+	
+	<!--Manager  -->
+	<bean name="managerDao" class="com.oa.Dao.ManagerDao"/>
+	<bean name="managerBiz" class="com.oa.Biz.ManagerBiz"/>
+	<bean name="managerAct" class="com.oa.Action.ManagerAction"/>
+	
+	<!--boss  -->
+	<bean name="bossDao" class="com.oa.Dao.BossDao"/>
+	<bean name="bossBiz" class="com.oa.Biz.BossBiz"/>
+	<bean name="bossAct" class="com.oa.Action.BossAction"/>
 </beans>

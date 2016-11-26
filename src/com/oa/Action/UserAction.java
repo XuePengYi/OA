@@ -11,17 +11,42 @@ import com.oa.Biz.UserBiz;
 import com.oa.Entity.Attendance_Management;
 import com.oa.Entity.Employee_Message;
 import com.oa.Entity.Employee_Punchcard_Message;
+import com.oa.Entity.Employee_Punchcard_Message_State;
+import com.oa.Entity.Employee_Workreport_Day;
 import com.oa.IAction.IUserAction;
 import com.opensymphony.xwork2.ActionSupport;
+
+import net.sf.json.JSONObject;
 
 public class UserAction extends ActionSupport implements IUserAction,SessionAware{
 	UserBiz userBiz;
 	Employee_Punchcard_Message epmf=new Employee_Punchcard_Message();
 	Employee_Punchcard_Message epml=new Employee_Punchcard_Message();
 	Employee_Message user=new Employee_Message();
+	Employee_Message manager=new Employee_Message();
+	Employee_Workreport_Day ewd=new Employee_Workreport_Day();
 	Map<String, Object> session;
 	Integer userName;
 	String userPwd;
+	
+	public String getAllEmployee_Workreport_Day(){
+		List<Employee_Workreport_Day> ewds=userBiz.getAllEmployee_Workreport_Day(user);
+		session.put("Employee_Workreport_Days", ewds);
+		return SUCCESS;
+	}
+	
+	public String saveEWD(){
+		ewd.setEmployee(user);
+		ewd.setManager(manager);
+		userBiz.saveEWD(ewd);
+		return SUCCESS;
+	}
+	
+	public String updateEmployee_Message(){
+		userBiz.updateEmployee_Message(user);
+		return SUCCESS;
+	}
+	
 	@Override
 	public String login() {
 		List users=userBiz.login(userName, userPwd);
@@ -30,16 +55,24 @@ public class UserAction extends ActionSupport implements IUserAction,SessionAwar
 			user.setEmployee_Id(userName);
 			user=userBiz.getPersonalInfo(user).get(0);
 			session.put("loginUser", user);
+			
 			return SUCCESS;
 		}else{
 			return LOGIN;
 		}
 	}
-
+	
 	@Override
 	public String punchCard_First() {
 		epmf.setEmployee(user);
-		epmf.setEmployee_Punchcard_Message_Firsttime(new SimpleDateFormat("yyyy-MM-dd hh-mm-ss").format(new Date()));
+		Integer hour=Integer.parseInt(new SimpleDateFormat("HH").format(new Date()));
+		Integer min=Integer.parseInt(new SimpleDateFormat("mm").format(new Date()));
+		if(hour>9 ){
+			epmf.setState(new Employee_Punchcard_Message_State(2, "迟到"));
+		}else if(hour==9 && min>30){
+			epmf.setState(new Employee_Punchcard_Message_State(2, "迟到"));
+		}
+		epmf.setEmployee_Punchcard_Message_Firsttime(new SimpleDateFormat("yyyy-MM-dd").format(new Date()).concat(" "+hour+":"+min));
 		userBiz.punchCard_First(epmf);
 		return SUCCESS;
 	}
@@ -47,27 +80,32 @@ public class UserAction extends ActionSupport implements IUserAction,SessionAwar
 	@Override
 	public String punchCard_Last() {
 		epml.setEmployee(user);
-		epml.setEmployee_Punchcard_Message_Firsttime(new SimpleDateFormat("yyyy-MM-dd hh-mm-ss").format(new Date()));
-		List<Employee_Punchcard_Message> epmfl=userBiz.getOneEmployee_Punchcard_Message(user);
-		if(epmfl.size()==0){
-			epmf.setEmployee_Punchcard_Message_Firsttime(new SimpleDateFormat("yyyy-MM-dd hh-mm-ss").format(new Date()));
-			userBiz.punchCard_First(epml);
-		}else{
-			epmf=epmfl.get(0);
-			if(epmf.getEmployee_Punchcard_Message_Lasttime()==null){
-			epml.setEmployee_Punchcard_Message_Id(epmf.getEmployee_Punchcard_Message_Id());
-			epml.setEmployee_Punchcard_Message_Firsttime(epmf.getEmployee_Punchcard_Message_Firsttime());
-			userBiz.punchCard_Last(epml);
+		epml.setState(epmf.getState());
+		Integer hour=Integer.parseInt(new SimpleDateFormat("HH").format(new Date()));
+		Integer min=Integer.parseInt(new SimpleDateFormat("mm").format(new Date()));
+		if(hour<19 ){
+			if(epmf.getState().getEmployee_Punchcard_Message_State_Id()==1){
+				epml.setState(new Employee_Punchcard_Message_State(2, "早退"));
 			}else{
-				userBiz.punchCard_First(epml);
+				epml.setState(new Employee_Punchcard_Message_State(4, "迟到\\早退"));
+			}			
+		}else if(hour==19 && min<30){
+			if(epmf.getState().getEmployee_Punchcard_Message_State_Id()==1){
+				epml.setState(new Employee_Punchcard_Message_State(2, "早退"));
+			}else{
+				epml.setState(new Employee_Punchcard_Message_State(4, "迟到\\早退"));
 			}
 		}
+		epml.setEmployee_Punchcard_Message_Id(epmf.getEmployee_Punchcard_Message_Id());
+		epml.setEmployee_Punchcard_Message_Firsttime(epmf.getEmployee_Punchcard_Message_Firsttime());
+		epml.setEmployee_Punchcard_Message_Lasttime(new SimpleDateFormat("yyyy-MM-dd").format(new Date()).concat(" "+hour+":"+min));
+		userBiz.punchCard_Last(epml);
 		return SUCCESS;
 	}
 
 	@Override
 	public String getPersonalInfo() {
-		// TODO Auto-generated method stub
+		
 		return SUCCESS;
 	}
 
@@ -82,7 +120,27 @@ public class UserAction extends ActionSupport implements IUserAction,SessionAwar
 		// TODO Auto-generated method stub
 		this.session=arg0;
 	}
-
+	
+	@Override
+	public String getAllEmployee_Punchcard_Message() {
+		List<Employee_Punchcard_Message> emps=userBiz.getAllEmployee_Punchcard_Message(user);
+		if(emps.size()==0){
+			Employee_Punchcard_Message empty=new Employee_Punchcard_Message("没有打卡信息", "没有打卡信息");
+			emps.add(empty);
+			session.put("Employee_Punchcard_Messages", emps);
+		}else{
+			session.put("Employee_Punchcard_Messages", emps);
+		}
+		return SUCCESS;
+	}
+	
+	public String getManager(){
+		List<Employee_Message> managers=userBiz.getManager(user);
+		manager=managers.get(0);
+		session.put("manager", manager);
+		return SUCCESS;
+	}
+	
 	public UserBiz getUserBiz() {
 		return userBiz;
 	}
@@ -134,18 +192,17 @@ public class UserAction extends ActionSupport implements IUserAction,SessionAwar
 	public Map<String, Object> getSession() {
 		return session;
 	}
+	
+	public void setManager(Employee_Message manager) {
+		this.manager = manager;
+	}
+	
+	public Employee_Workreport_Day getEwd() {
+		return ewd;
+	}
 
-	@Override
-	public String getAllEmployee_Punchcard_Message() {
-		List<Employee_Punchcard_Message> emps=userBiz.getAllEmployee_Punchcard_Message(user);
-		if(emps.size()==0){
-			Employee_Punchcard_Message empty=new Employee_Punchcard_Message("没有打卡信息", "没有打卡信息");
-			emps.add(empty);
-			session.put("Employee_Punchcard_Message", emps);
-		}else{
-			session.put("Employee_Punchcard_Messages", emps);
-		}
-		return SUCCESS;
+	public void setEwd(Employee_Workreport_Day ewd) {
+		this.ewd = ewd;
 	}
 
 	

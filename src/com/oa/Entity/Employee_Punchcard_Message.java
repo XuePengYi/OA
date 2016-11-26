@@ -5,8 +5,10 @@ import java.io.Serializable;
 public class Employee_Punchcard_Message implements Serializable{
 		private Integer employee_Punchcard_Message_Id;
 		private Employee_Message employee;
-		private String employee_Punchcard_Message_Firsttime="123";
-		private String employee_Punchcard_Message_Lasttime="123";
+		private String employee_Punchcard_Message_Firsttime="没有打卡信息";
+		private String employee_Punchcard_Message_Lasttime="没有打卡信息";
+		private Employee_Punchcard_Message_State state=new Employee_Punchcard_Message_State(1, "实到");
+		
 		public Integer getEmployee_Punchcard_Message_Id() {
 			return employee_Punchcard_Message_Id;
 		}
@@ -30,6 +32,13 @@ public class Employee_Punchcard_Message implements Serializable{
 		}
 		public void setEmployee_Punchcard_Message_Lasttime(String employee_Punchcard_Message_Lasttime) {
 			this.employee_Punchcard_Message_Lasttime = employee_Punchcard_Message_Lasttime;
+		}
+		
+		public Employee_Punchcard_Message_State getState() {
+			return state;
+		}
+		public void setState(Employee_Punchcard_Message_State state) {
+			this.state = state;
 		}
 		public Employee_Punchcard_Message() {
 		}

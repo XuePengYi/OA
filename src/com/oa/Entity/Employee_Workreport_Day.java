@@ -11,7 +11,7 @@ public class Employee_Workreport_Day implements Serializable{
 		private String employee_Workreport_Day_Summary;
 		private String employee_Workreport_Day_Content;
 		private String employee_Workreport_Day_Reply;
-		private Workreport_State state;
+		private Workreport_State state=new Workreport_State(2, "Œ¥…Û∫À");
 		
 		public Integer getEmployee_Workreport_Day_Id() {
 			return employee_Workreport_Day_Id;

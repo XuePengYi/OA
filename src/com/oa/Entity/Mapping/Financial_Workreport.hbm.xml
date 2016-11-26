@@ -7,15 +7,15 @@
 		<id name="financial_Workreport_Id" type="java.lang.Integer" column="financial_workreport_id">
 			<generator class="increment"></generator>
 		</id>
-		<many-to-one name="accountant" class="com.oa.Entity.Employee_Message" lazy="false" not-null="false" insert="false" update="false">
+		<many-to-one name="accountant" class="com.oa.Entity.Employee_Message" lazy="false" not-null="false" >
 			<column name="employee_Id" ></column>
 		</many-to-one>
 		<property name="financial_Workreport_Date" type="java.lang.String" column="financial_workreport_date"></property>
-		<many-to-one name="Event_Id" class="com.oa.Entity.Financial_Workreport_Event" lazy="false" not-null="false" insert="false" update="false">
+		<many-to-one name="event_Id" class="com.oa.Entity.Financial_Workreport_Event" lazy="false" not-null="false" >
 			<column name="financial_Workreport_Event_Id" ></column>
 		</many-to-one>
 		<property name="financial_Workreport_Amount" type="java.lang.Float" column="financial_workreport_amount"></property>
-		<many-to-one name="state" class="com.oa.Entity.Workreport_State" lazy="false" not-null="false" insert="false" update="false">
+		<many-to-one name="state" class="com.oa.Entity.Workreport_State" lazy="false" not-null="false" >
 			<column name="workreport_State_Id" ></column>
 		</many-to-one>
 	</class>

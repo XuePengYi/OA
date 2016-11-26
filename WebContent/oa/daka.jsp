@@ -66,6 +66,11 @@
 <!--[if IE 8 ]> <body class="ie ie8 "> <![endif]-->
 <!--[if IE 9 ]> <body class="ie ie9 "> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
+
+
+
+
+
 <body class="">
 	<!--<![endif]-->
 
@@ -100,7 +105,7 @@
 </style>
 				<h2>打卡信息：</h2>
 				<div id='calendar'></div>
-				<table border="1">
+				<table class="table">
 					<tr>
 						<td>打卡编号</td>
 						<td>员工姓名</td>
@@ -110,12 +115,12 @@
 					<tr>
 						<td colspan="5"></td>
 					</tr>
-<c:forEach items="${sessionScope.Employee_Punchcard_Message }" var="emp" varStatus="vs">
+<c:forEach items="${sessionScope.Employee_Punchcard_Messages }" var="epm" varStatus="vs">
 				<tr>
-						<td>${vs.index }</td>
+						<td>${vs.index+1 }</td>
 						<td>${sessionScope.loginUser.employee_Name}</td>
-						<td>${emp.employee_Punchcard_Message_Firsttime }</td>
-						<td>${emp.employee_Punchcard_Message_Lasttime }</td>
+						<td>${epm.employee_Punchcard_Message_Firsttime }</td>
+						<td>${epm.employee_Punchcard_Message_Lasttime }</td>
 					</tr>
 </c:forEach>
 				</table>

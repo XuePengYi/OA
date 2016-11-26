@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.oa.Entity.Employee_Punchcard_Message_State" table="employee_punchcard_message_state">
+		<id name="employee_Punchcard_Message_State_Id" type="java.lang.Integer" column="employee_punchcard_message_state_id">
+			<generator class="increment"></generator>
+		</id>
+		<property name="employee_Punchcard_Message_State_Name" type="java.lang.String" column="employee_punchcard_message_state_name"></property>
+	</class>
+</hibernate-mapping>
